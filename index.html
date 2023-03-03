@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .list {
+        display: flex;
+    }
+
+    .tabItem {
+        margin: 0 5px;
+        padding: 5px;
+        border: 3px solid pink;
+        border-radius: 5px;
+    }
+
+    .contentItem {
+        display: none;
+    }
+
+    .active {
+        display: block;
+        background-color: pink;
+        color: white;
+        font-weight: bolder;
+    }
+</style>
+
+<body>
+    <div class="list">
+        <div class="tabItem">tab1</div>
+        <div class="tabItem">tab2</div>
+        <div class="tabItem">tab3</div>
+        <div class="tabItem">tab4</div>
+    </div>
+
+    <div class="content">
+        <div class="contentItem">内容一</div>
+        <div class="contentItem">内容二</div>
+        <div class="contentItem">内容三</div>
+        <div class="contentItem">内容四</div>
+    </div>
+</body>
+<script>
+    const list = document.querySelectorAll(".tabItem")
+    const contentList = document.querySelectorAll(".contentItem")
+
+    for (let i = 0; i < list.length; i++) {
+        const element = list[i];
+        element.onclick = function () {
+            for (let h = 0; h < list.length; h++) {
+                list[h].classList.remove('active')
+            }
+            for (let j = 0; j < contentList.length; j++) {
+                const contentItem = contentList[j];
+                if (i == j) {
+                    this.classList.add('active')
+                    contentItem.style.display = 'block'
+                } else {
+                    contentItem.style.display = 'none'
+                }
+            }
+        }
+    }
+</script>
+
+</html>
